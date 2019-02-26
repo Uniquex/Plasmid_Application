@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngFor="let p of servers" id="Server_{{p.host}}">
+    <ion-item [routerLink]="['/menu/details', p.host]" [routerDirection]="'root'">{{p.host}}</ion-item>
+  </ion-list>
+</ion-content>

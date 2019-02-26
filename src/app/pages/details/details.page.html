@@ -1,0 +1,164 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{pTitle}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-card>
+        <ion-card-title>System</ion-card-title>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        System:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.system.system}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Release:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.system.release}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Machine:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.system.machine}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Version:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.system.version}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-title>CPU</ion-card-title>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        Cores:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.cpu.cpu_cores}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Frequency:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.cpu.cpu_freq}} Mhz
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Current usage:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.cpu.cpu_load}} %
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Temperature:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.cpu.cpu_temp}} °C
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-title>Disk</ion-card-title>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        {{pDetails.disk.disk_percent}} GB free
+                    </ion-col>
+                    <ion-col>
+                        ({{pDetails.disk.disk_free}} %)
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <app-load-bar [load]="pDetails.disk.disk_percent" [usedSize]="pDetails.disk.disk_used"
+                                      [size]="pDetails.disk.disk_total"></app-load-bar>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <!--<ion-button (click)="incrementLoadBar()">Increment Load</ion-button>-->
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-title>Memory</ion-card-title>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        Size:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.memory.memory_size}}GB
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        Current usage:
+                    </ion-col>
+                    <ion-col>
+                        {{pDetails.memory.memory_load}} %
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-title>Network</ion-card-title>
+        <ion-card-content>
+            <ion-grid *ngFor="let item of pInterfaces">
+                <ion-row>
+                    <ion-col class="interface">{{item.interface}}</ion-col>
+                    <ion-col class="interfaceSub">{{item.address}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class=" interfaceSub">{{item.gateway}}</ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button [routerLink]="['/chart', pDetails.host]" [routerDirection]="'root'">Charts</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button float-right [routerLink]="['/processes', pDetails.host]" [routerDirection]="'root'">Processes</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+   </ion-content>
