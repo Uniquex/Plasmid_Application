@@ -7,6 +7,10 @@
                     slot="end">
             <ion-icon name="stats" slot="icon-only"></ion-icon>
         </ion-button>
+        <ion-button [routerDirection]="'root'" [routerLink]="['/menu/details/processes', pTitle]" id="ProcessButton"
+                    slot="end">
+            <ion-icon name="cog" slot="icon-only"></ion-icon>
+        </ion-button>
         <ion-title>{{pTitle}}</ion-title>
 
     </ion-toolbar>

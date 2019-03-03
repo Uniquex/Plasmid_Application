@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: 'settings', loadChildren: '../settings/settings.module#SettingsPageModule'},
       {path: 'details/:hostname', loadChildren: '../details/details.module#DetailsPageModule'},
       {path: 'details/chart/:hostname', loadChildren: '../chart/chart.module#ChartPageModule'},
-      {path: 'details/processes/:hostname', loadChildren: '../chart/chart.module#ChartPageModule'}
+      {path: 'details/processes/:hostname', loadChildren: '../processes/processes.module#ProcessesPageModule'}
     ]
   },
   {
