@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>chart</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{pTitle}}</ion-title>
+    <ion-select (ionChange)="rebuildGraph()" [(ngModel)]="pTimeFrame" id="select" placeholder="duration" slot="end">
+      <ion-select-option *ngFor="let i of dropdownOptions">{{i}}</ion-select-option>
+    </ion-select>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <div #graphContainer align="center"></div>
 </ion-content>

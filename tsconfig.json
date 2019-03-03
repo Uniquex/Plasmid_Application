@@ -1,6 +1,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    // Edit 4:9
+    "paths": {
+      "plotly.js": [
+        "../node_modules/plotly.js/lib/core.js"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

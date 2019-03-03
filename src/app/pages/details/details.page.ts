@@ -47,28 +47,6 @@ export class DetailsPage implements OnInit {
 
     ngOnInit() {
         this.pTitle = this.route.snapshot.paramMap.get('hostname');
-        // this.apiService.getServerDetailsMD(this.pTitle).then((response) => {
-        //     console.log(response);
-        //     this.pDetails = JSON.parse(response.body.toString());
-        //     // @ts-ignore
-        //     const nw = this.pDetails.network;
-        //     const interfaces = [];
-        //     for (let key in this.pDetails.network) {
-        //         console.log(key);
-        //         console.log(nw[key]);
-        //         interfaces.push({
-        //             'interface': key,
-        //             'address': nw[key][0][1],
-        //             'gateway': nw[key][0][2]
-        //         });
-        //     }
-        //     // @ts-ignore
-        //     this.pInterfaces = interfaces;
-        //
-        //     console.log(this.pDetails);
-        //     console.log(this.pInterfaces);
-        // });
-
         this.authService.getServerDetails(this.pTitle).subscribe(res => {
             console.log(res);
             // @ts-ignore

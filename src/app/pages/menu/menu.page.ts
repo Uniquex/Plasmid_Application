@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, RouterEvent} from '@angular/router';
 
 @Component({
@@ -13,11 +13,6 @@ export class MenuPage implements OnInit {
       title: 'Home',
       url: '/menu/home',
       icon: 'home'
-    },
-    {
-      title: 'Chart',
-      url: '/menu/chart',
-      icon: 'analytics'
     },
     {
       title: 'Settings',
