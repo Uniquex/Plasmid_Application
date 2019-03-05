@@ -80,35 +80,16 @@ export class APIService {
         }
     }
 
-
-    getProcesses() {
-        const query = 'SHOW TAG VALUES ON "RPI" FROM "process_list" WITH KEY = "pName"';
-        return new Promise((resolve, reject) => {
-            this.makeRequest(query).then((prom) => {
-                resolve(prom);
-            });
-        });
-
-    }
-
-    getProcessDetails(first, time, pname) {
-        const process = pname;
-        if (first) {
-            return new Promise((resolve, reject) => {
-                const query = 'SELECT pCPU, pMemory FROM "RPI"."autogen"."process_list" where "pName"=\'' + process + '\' ORDER BY DESC LIMIT 1';
-                this.makeRequest(query).then((prom) => {
-                    resolve(prom);
-                });
-            });
-        } else {
-            const query = 'SELECT pCPU, pMemory FROM "RPI"."autogen"."process_list" where "pName"=\'' + pname + '\' and time = ' + time;
-            return new Promise((resolve, reject) => {
-                this.makeRequest(query).then((prom) => {
-                    resolve(prom);
-                });
-            });
-        }
-
+    getProcesses(hostname) {
+        return this.http.get(`${this.url}/server/${hostname}/processes`).pipe(
+            catchError(e => {
+                const status = e.status;
+                if (status === 401) {
+                    this.showAlert('You are not authorized for this!');
+                }
+                throw new Error(e);
+            })
+        );
     }
 
     getServers() {

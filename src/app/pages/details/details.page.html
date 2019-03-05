@@ -104,15 +104,12 @@
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        {{pDetails.disk.disk_percent}} GB free
-                    </ion-col>
-                    <ion-col>
-                        ({{pDetails.disk.disk_free}} %)
+                        {{pDetails.disk.disk_percent}} GB of {{pDetails.disk.disk_total}} GB free
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
-                        <app-load-bar [load]="pDetails.disk.disk_percent" [usedSize]="pDetails.disk.disk_used"
+                        <app-load-bar [load]="pDetails.disk.disk_free" [usedSize]="pDetails.disk.disk_used"
                                       [size]="pDetails.disk.disk_total"></app-load-bar>
                     </ion-col>
                 </ion-row>
@@ -148,28 +145,23 @@
     <ion-card>
         <ion-card-title>Network</ion-card-title>
         <ion-card-content>
+
             <ion-grid *ngFor="let item of pInterfaces">
-                <ion-row>
-                    <ion-col class="interface">{{item.interface}}</ion-col>
-                    <ion-col class="interfaceSub">{{item.address}}</ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col class=" interfaceSub">{{item.gateway}}</ion-col>
-                </ion-row>
+                <ion-card>
+                    <ion-card-title>{{item.interface}}</ion-card-title>
+                    <ion-card-content>
+                        <ion-row>
+                            <ion-col>Ipv4</ion-col>
+                            <ion-col class="interfaceSub">{{item.address}}</ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>Gateway</ion-col>
+                            <ion-col class=" interfaceSub">{{item.gateway}}</ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
             </ion-grid>
         </ion-card-content>
     </ion-card>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-button [routerLink]="['/chart', pDetails.host]" [routerDirection]="'root'">Charts</ion-button>
-            </ion-col>
-            <ion-col>
-                <ion-button float-right [routerLink]="['/processes', pDetails.host]" [routerDirection]="'root'">
-                    Processes
-                </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
 </ion-content>

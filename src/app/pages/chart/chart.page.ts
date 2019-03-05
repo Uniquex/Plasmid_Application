@@ -17,7 +17,7 @@ export class ChartPage implements OnInit {
   @ViewChild('graphContainer') graphContainer;
   interval;
 
-  dropdownOptions = ['1h', '2h', '4h', '1d', '1w', 'all'];
+  dropdownOptions = ['1h', '2h', '4h', '1d', '1w', '1m', 'all'];
 
   pTimeFrame;
   subscription: Subscription;
@@ -125,6 +125,10 @@ export class ChartPage implements OnInit {
         }
         case('1w'): {
           timeframe = 168;
+          break;
+        }
+        case('1m'): {
+          timeframe = 744;
           break;
         }
         case('all'): {
