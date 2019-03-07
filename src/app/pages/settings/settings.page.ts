@@ -1,5 +1,6 @@
 import {Component, Injectable, ViewChild} from '@angular/core';
 import {Storage} from '@ionic/storage';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-about',
@@ -12,7 +13,7 @@ export class SettingsPage {
   @ViewChild('ApiIP') ip;
   @ViewChild('ApiPort') port;
 
-  constructor(private storage: Storage) {
+    constructor(private storage: Storage, private auth: AuthService) {
   }
   ionViewWillEnter() {
     this.storage.get('API_IP').then( val => {
@@ -31,4 +32,8 @@ export class SettingsPage {
     console.log('Setting api ip to ' + this.ip.value);
     console.log('Setting api port to ' + this.port.value);
   }
+
+    logout() {
+        this.auth.logout();
+    }
 }
