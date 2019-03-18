@@ -30,7 +30,7 @@ export class APIService {
     }
     getCPULoadNew(hostname, time) {
         if (time === -1) {
-            return this.http.get(`${this.url}/server/${hostname}/cpuLoad`).pipe(
+            return this.http.get(`${this.url}/server/${hostname}/sysLoad`).pipe(
                 catchError(e => {
                     const status = e.status;
                     if (status === 401) {
@@ -40,7 +40,7 @@ export class APIService {
                 })
             );
         } else {
-            return this.http.get(`${this.url}/server/${hostname}/cpuLoad/${time}`).pipe(
+            return this.http.get(`${this.url}/server/${hostname}/sysLoad/${time}`).pipe(
                 catchError(e => {
                     const status = e.status;
                     if (status === 401) {

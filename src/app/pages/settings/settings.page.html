@@ -9,15 +9,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label color="primary">API IP</ion-label>
-    <ion-input #ApiIP placeholder="IP Input"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label color="primary">API Port</ion-label>
-    <ion-input #ApiPort placeholder="xxxx"></ion-input>
-  </ion-item>
+  <ion-list>
     <ion-item>
-        <ion-button color="primary" (click)="logout()">Logout</ion-button>
+      <ion-label color="primary">API</ion-label>
+      <ion-input #ApiIP placeholder="http://example.com:80"></ion-input>
     </ion-item>
+    <ion-item style="float:right;">
+      <ion-button color="primary" (click)="logout()">Logout</ion-button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
